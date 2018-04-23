@@ -154,7 +154,10 @@ namespace Adadev.Util {
         /// <param name="y">y do ponto que a perpendicular intercepta</param>
         /// <returns>Coeficientes da reta</returns>
         public static double[] PerpendicularLine(double a, double x, double y) {
-            return new double[] { -1 / a, y + x / a };
+		if(a == 0) {
+			return null;	
+		}
+            	return new double[] { -1 / a, y + x / a };
         }
 
         /// <summary>
@@ -163,7 +166,7 @@ namespace Adadev.Util {
         /// <returns>Array com as raízes</returns>
         public static double[] Baskara(double a, double b, double c) {
             double delta = b * b - 4 * a * c;
-            if(delta < 0) {
+            if(delta < 0 || a == 0) {
                 return null;
             }
             if(delta == 0) {
